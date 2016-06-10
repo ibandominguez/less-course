@@ -5,7 +5,7 @@ var less = require('gulp-less');
 
 gulp.task('less', function() {
   gulp
-    .src('src/**/*.less')
+    .src('src/app.less')
     .pipe(less())
     .pipe(gulp.dest('dist/'));
 });

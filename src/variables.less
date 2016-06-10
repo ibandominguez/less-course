@@ -1,0 +1,70 @@
+/**
+ * Declaring Variables
+ *
+ * Variables can hold pretty much any value
+ * From hx colors values to relative paths
+ */
+
+@white: #fff;
+@grey: #eee;
+@dark-grey: #555;
+@black: #000;
+
+@font-path: '../fonts';
+@dependencies-path: '../';
+
+@btn-base-class: btn;
+@property: color;
+
+body {
+  @{property}: @dark-grey;
+}
+
+/**
+ * Variables Interpolation
+ *
+ * A variable can be interpolated for
+ * special cases
+ */
+
+.@{btn-base-class} {
+  color: @grey;
+}
+
+/**
+ * Lazy Loading
+ *
+ * A variable can be used before declared
+ */
+
+.lazy-loading {
+  color: @green;
+}
+
+@green: green;
+
+/**
+ * Variable shadowing
+ *
+ * Scoping when a variable is defined twice
+ * The following will eval to
+ *
+ * .class {
+ *   one: 1;
+ * }
+ * .class .brass {
+ *   three: 3;
+ * }
+ */
+
+@var: 0;
+
+.class {
+  @var: 1;
+  .brass {
+    @var: 2;
+    three: @var;
+    @var: 3;
+  }
+  one: @var;
+}
