@@ -1,0 +1,63 @@
+/**
+ * Extend
+ *
+ * class-one will receive class two properties
+ *
+ * .class-two,
+ * .class-one {
+ *  font-size: 14px;
+ * }
+ */
+
+.class-one {
+  &:extend(.class-two);
+  color: red;
+  background: blue;
+}
+
+/**
+ * It can also be used as the following:
+ *
+ * When used as (.class-name all) it will extend all
+ * ocurrences e.g. ".other-class.class-name"
+ */
+
+.class-one:extend(.class-two) {}
+
+.class-two {
+  font-size: 14px;
+}
+
+/**
+ * It might contains various selectors
+ */
+
+.class-one:extend(.class-two, .class-three) {}
+
+.class-three {
+  font-weight: bold;
+}
+
+/**
+ * Extending nested
+ *
+ * This is what the following less
+ * should evaluate to
+ *
+ * .a {
+ *   color: #555;
+ * }
+ *
+ * .a small, .b {
+ *   color: #999;
+ * }
+ */
+
+.a {
+  color: #555;
+  small {
+    color: #999;
+  }
+}
+
+.b:extend(.a small) {}
